@@ -1,4 +1,4 @@
-module system.go
+module seculeet
 
 go 1.16
 
