@@ -51,25 +51,25 @@ go get -u github.com/seculeet/secuteel
 ### Create a config file
 ```json
 {  
-  "commands": [  
-  {
-   "name": "Example Audit Step",  
-   "command": "You can script in JavaScript and add your audit command in here",  
-   "dontSaveArtefact": true,  
-   "blackenContent": "Regex pattern",  
-   "typeExpected": "containsReg",  
-   "expected": "Regex pattern",  
-   "description": "This is just for taking notes of what is happening"  
-  }
-  ],
   "system":
   {
-   "systemName": "The current operating system",
-   "version": "The OS version",
-   "shell": "A system shell (e.g. CMD, Powershell), optional",
-   "argument": "The argument used to execute commands (e.g. /C), optional",
-   "root": "Specify if the audit has to be run as root, optional (default false)"
-  }
+    "systemName": "The current operating system",
+    "version": "The OS version",
+    "shell": "A system shell (e.g. CMD, Powershell), optional",
+    "argument": "The argument used to execute commands (e.g. /C), optional",
+    "root": "Specify if the audit has to be run as root, optional (default false)"
+  },
+  "commands": [  
+    {
+      "name": "Example Audit Step",  
+      "command": "You can script in JavaScript and add your audit command in here",  
+      "dontSaveArtefact": true,  
+      "blackenContent": "Regex pattern",  
+      "typeExpected": "containsReg",  
+      "expected": "Regex pattern",  
+      "description": "This is just for taking notes of what is happening"  
+    }
+  ]
 }
 ```
 ### Note
@@ -130,8 +130,8 @@ secuteel.exe -h
 {
   "system": 
   {
-   "systemName": "Windows",
-   "version": "10.0.19042"
+    "systemName": "Windows",
+    "version": "10.0.19042"
   },
   "commands": [
     {
@@ -149,8 +149,8 @@ secuteel.exe -h
 {
   "system": 
   {
-   "systemName": "Linux",
-   "version": "20.04.1-Ubuntu"
+    "systemName": "Linux",
+    "version": "20.04.1-Ubuntu"
   },
   "commands": [
     {
