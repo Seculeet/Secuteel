@@ -128,38 +128,38 @@ secuteel.exe -h
 #### Windows
 ```json
 {
-  "commands": [
-  {
-   "name": "get_bluetooth_status",
-   "command": "regQuery('HKLM:\\SYSTEM\\CurrentControlSet\\Services\\bthserv', 'Start')",
-   "typeExpected": "==",
-   "expected": "3",
-   "description": "Checking bluetooth enabled"
-  }
-  ],
   "system": 
   {
    "systemName": "Windows",
    "version": "10.0.19042"
-  }
+  },
+  "commands": [
+    {
+      "name": "get_bluetooth_status",
+      "command": "regQuery('HKLM:\\SYSTEM\\CurrentControlSet\\Services\\bthserv', 'Start')",
+      "typeExpected": "==",
+      "expected": "3",
+      "description": "Checking bluetooth enabled"
+    }
+  ]
 }
 ```
 #### Linux
 ```json
 {
-  "commands": [
-  {
-   "name": "get_password_expiration",
-   "command": "useradd -D | grep INACTIVE",
-   "typeExpected": "==",
-   "expected": "INACTIVE=-1",
-   "description": "Check for the default time an account gets disabled after password expires"
-  }
-  ],
   "system": 
   {
    "systemName": "Linux",
    "version": "20.04.1-Ubuntu"
-  }
+  },
+  "commands": [
+    {
+      "name": "get_password_expiration",
+      "command": "useradd -D | grep INACTIVE",
+      "typeExpected": "==",
+      "expected": "INACTIVE=-1",
+      "description": "Check for the default time an account gets disabled after password expires"
+    }
+  ]
 }
 ```
