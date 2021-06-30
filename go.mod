@@ -1,4 +1,4 @@
-module seculeet
+module secuteel
 
 go 1.16
 
