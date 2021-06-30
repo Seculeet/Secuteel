@@ -49,7 +49,7 @@ func printBanner() {
 	}
 }
 
-func getHelpText() {
+func printHelpText() {
 	synopsisText := `
 	` + strings.ToLower(appName) + ` -input|--input [-h] [-p] [-v] [-s] [-debug] [-output|--output] [-add|--add]
 
@@ -74,15 +74,19 @@ func getHelpText() {
 }
 
 // displays progress bar while executing
-func fullProgressBarString(allAuditslength int, isAuditPosition int) {
-	auditPercent := getAuditPercent(allAuditslength, isAuditPosition)
-	bar := getProgressBar(auditPercent)
-	fmt.Print("\r", fmt.Sprintf("Progress: [%20s] %3d%s%5s", bar, auditPercent, " %", ""))
-	if isAuditPosition == allAuditslength {
-		fmt.Println()
+func printProgressBar(allAuditslength int, auditPosition int) {
+	auditPercent := getAuditPercent(allAuditslength, auditPosition)
+	bar := getProgressBarUnicode(auditPercent)
+
+	printTxt := "\r" + fmt.Sprintf("Progress: [%20s] %3d%s%5s", bar, auditPercent, " %", "")
+	if auditPosition == allAuditslength {
+		printTxt += "\n"
 	}
+	fmt.Println(printTxt)
 }
-func getProgressBar(percent int) string {
+
+// helper for progress bar
+func getProgressBarUnicode(percent int) string {
 	barLength := 20
 	steps := 100 / barLength
 	var bar string
@@ -96,13 +100,22 @@ func getProgressBar(percent int) string {
 	return fmt.Sprintf("%20s", bar)
 }
 
+// helper for progress bar
+func getAuditPercent(allAuditsLength int, auditPosition int) int {
+	auditPercent := float64(auditPosition) / float64(allAuditsLength) * 100
+	return int(auditPercent)
+}
+
 func printCommandStarted(index int, auditListLength int) {
 	fmt.Print("Audit started (" + strconv.Itoa(index) + "/" + strconv.Itoa(auditListLength) + "): ")
 }
+
 func printCommandResult(auditResult bool) {
+	var printTxt string
 	if auditResult {
-		fmt.Println("SUCCESS")
+		printTxt = "SUCCESS"
 	} else {
-		fmt.Println("FAILED")
+		printTxt = "FAILED"
 	}
+	fmt.Println(printTxt)
 }

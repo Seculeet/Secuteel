@@ -106,7 +106,7 @@ func main() {
 
 	// TODO write debug toggelt flags
 	if flags.help {
-		getHelpText()
+		printHelpText()
 		os.Exit(0)
 	}
 
@@ -220,7 +220,7 @@ func main() {
 		if flags.verbose {
 			printCommandStarted(i+1, allAuditLength)
 		} else {
-			fullProgressBarString(allAuditLength, i+1)
+			printProgressBar(allAuditLength, i+1)
 		}
 
 		dontSaveArtefact = bigAudit.DontSaveArtefact
@@ -288,12 +288,6 @@ func main() {
 		WriteErrorLog(err.Error(), "")
 	}
 
-}
-
-// helper for progress bar
-func getAuditPercent(allAuditsLength int, isAuditPosition int) int {
-	auditPercent := float64(isAuditPosition) / float64(allAuditsLength) * 100
-	return int(auditPercent)
 }
 
 func checkZipLocation() bool {
@@ -695,6 +689,7 @@ func CallCompare(cmd string, expected string) (bool, error) {
 	}
 
 }
+
 //Should be called in a JS if Condition
 //Extends Call Function, by checking if expected string is containt in the call Output string
 func CallContains(cmd string, expected string) (bool, error) {
