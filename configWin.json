@@ -1,0 +1,370 @@
+{
+  "system": 
+  {
+    "systemName": "Windows",
+    "version": "10"
+  },
+  "commands": [
+    {
+      "name": "check_antivir_enabled",
+      "command": "callContains('Get-MpComputerStatus | findstr AntivirusEnabled', 'True')",
+      "typeExpected": "contains",
+      "expected": "True",
+      "description": "Checking Antivir is enabled"
+    },
+    {
+      "name": "check_antispyware_enabled",
+      "command": "callContains('Get-MpComputerStatus | findstr AntispywareEnabled', 'True')",
+      "typeExpected": "contains",
+      "expected": "True",
+      "description": "Checking Antispyware is enabled"
+    },
+    {
+      "name": "check_firewall_profile_domain",
+      "command": "callContains('Get-NetFirewallProfile -Name Domain | findstr Enabled', 'True')",
+      "typeExpected": "contains",
+      "expected": "True",
+      "description": "Checking Firewall enabled on Domain"
+    },
+    {
+      "name": "check_firewall_profile_public",
+      "command": "callContains('Get-NetFirewallProfile -Name Public | findstr Enabled', 'True')",
+      "typeExpected": "contains",
+      "expected": "True",
+      "description": "Checking Firewall enabled on Public"
+    },
+    {
+      "name": "check_firewall_profile_private",
+      "command": "callContains('Get-NetFirewallProfile -Name Private | findstr Enabled', 'True')",
+      "typeExpected": "contains",
+      "expected": "True",
+      "description": "Checking Firewall enabled on Private"
+    },
+    {
+      "name": "check_BTAGService_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\BTAGService -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Bluetooth Audio Gateway Service is disabled",
+      "dontSaveArtefact": true
+    },
+    {
+      "name": "check_bthserv_is_disabled",
+      "command": "reqQuery('HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\bthserv', 'Start')",
+      "co": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\bthserv -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Bluetooth Support Service is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_Browser_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Browser -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Browser is disabled"
+    },
+    {
+      "name": "check_MapsBroker_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\MapsBroker -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking MapsBroker is disabled"
+    },
+    {
+      "name": "check_lfsvc_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lfsvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Geolocation Service is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_IISADMIN_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\IISADMIN -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking IIS Admin Service is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_irmon_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\irmon -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Infrared monitor service is disabled"
+    },
+    {
+      "name": "check_ics_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Internet Connection Sharing is disabled"
+    },
+    {
+      "name": "check_lltdsvc_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\lltdsvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Link-Layer Topology Discovery Mapper is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_LxssManager_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LxssManager -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking LxssManager is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_FTPSVC_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\FTPSVC -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Microsoft FTP Service is disabled"
+    },
+    {
+      "name": "check_MSiSCSI_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\MSiSCSI -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Microsoft iSCSI Initiator Service is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_sshd_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\sshd -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking OpenSSH SSH Server is disabled"
+    },
+    {
+      "name": "check_PNRPsvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PNRPsvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Peer Name Resolution Protocol is disabled"
+    },
+    {
+      "name": "check_p2psvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\p2psvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Peer Networking Grouping is disabled"
+    },
+    {
+      "name": "check_p2pimsvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\p2pimsvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Peer Networking Identity Manager is disabled"
+    },
+    {
+      "name": "check_PNRPAutoReg_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PNRPAutoReg -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking PNRP Machine Name Publication Service is disabled"
+    },
+    {
+      "name": "check_wercplsupport_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\wercplsupport -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Problem Reports and Solutions Control Panel Support is disabled"
+    },
+    {
+      "name": "check_RasAuto_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RasAuto -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Access Auto Connection Manager is disabled"
+    },
+    {
+      "name": "check_SessionEnv_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SessionEnv -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Desktop Configuration is disabled"
+    },
+    {
+      "name": "check_TermService_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\TermService -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Desktop Services is disabled"
+    },
+    {
+      "name": "check_UmRdpService_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\UmRdpService -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Desktop Services UserMode Port Redirector is disabled"
+    },
+    {
+      "name": "check_RpcLocator_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RpcLocator -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Procedure Call Locator is disabled"
+    },
+    {
+      "name": "check_RemoteRegistry_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RemoteRegistry -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Remote Registry is disabled"
+    },
+    {
+      "name": "check_RemoteAccess_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\RemoteAccess -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Routing and Remote Access is disabled"
+    },
+    {
+      "name": "check_LanmanServer_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Server LanmanServer is disabled"
+    },
+    {
+      "name": "check_simptcp_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\simptcp -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Simple TCP/IP Services is disabled"
+    },
+    {
+      "name": "check_SNMP_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SNMP -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking SNMP Service is disabled"
+    },
+    {
+      "name": "check_sacsvr_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\sacsvr -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Special Administration Console Helper is disabled"
+    },
+    {
+      "name": "check_SSDPSRV_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SSDPSRV -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking SSDP Discovery is disabled"
+    },
+    {
+      "name": "check_upnphost_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\upnphost -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking UPnP Device Host is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_WMSvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WMSvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Web Management Service is disabled"
+    },
+    {
+      "name": "check_WerSvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WerSvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Error Reporting Service is disabled"
+    },
+    {
+      "name": "check_Wecsvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Wecsvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Event Collector is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_WMPNetworkSvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WMPNetworkSvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Media Player Network Sharing Service is disabled"
+    },
+    {
+      "name": "check_icssvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\icssvc -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Mobile Hotspot Service is disabled"
+    },
+    {
+      "name": "check_WpnService_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WpnService -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Push Notifications System Service is disabled"
+    },
+    {
+      "name": "check_PushToInstall_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\PushToInstall -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows PushToInstall Service is disabled"
+    },
+    {
+      "name": "check_WinRM_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\WinRM -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking Windows Remote Management is disabled"
+    },
+    {
+      "kommentar": "ist Disabled or Not Installed?",
+      "name": "check_W3SVC_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\W3SVC -Name Start",
+      "typeExpected": "==",
+      "expected": "4",
+      "description": "Checking World Wide Web Publishing Service is disabled"
+    },
+    {
+      "name": "check_XboxGipSvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\XboxGipSvc -Name Start",
+      "typeExpected": "==",
+      "expected": "Hund",
+      "description": "Checking Xbox Accessory Management Service is disabled"
+    },
+    {
+      "name": "check_XblAuthManager_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\XblAuthManager -Name Start",
+      "typeExpected": "==",
+      "expected": "3",
+      "description": "Checking Xbox Live Auth Manager is disabled"
+    },
+    {
+      "name": "check_XblGameSave_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\XblGameSave -Name Start",
+      "typeExpected": "==",
+      "expected": "3",
+      "description": "Checking Xbox Live Game Save is disabled"
+    },
+    {
+      "name": "check_XboxNetApiSvc_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\XboxNetApiSvc -Name Start",
+      "typeExpected": "==",
+      "expected": "3",
+      "description": "Checking Xbox Live Networking Service is disabled"
+    },
+    {
+      "name": "check_Firewall_Domain_is_disabled",
+      "command": "Get-ItemPropertyValue Registry::HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\WindowsFirewall\\DomainProfile -Name EnableFirewall",
+      "typeExpected": "==",
+      "expected": "3",
+      "description": "Checking Windows Firewall: Domain: Firewall state is On"
+    }
+  ]
+}

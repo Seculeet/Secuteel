@@ -79,7 +79,11 @@ func printProgressBar(allAuditslength int, auditPosition int) {
 	bar := getProgressBarUnicode(auditPercent)
 
 	printTxt := "\r" + fmt.Sprintf("Progress: [%20s] %3d%s%5s", bar, auditPercent, " %", "")
-	fmt.Println(printTxt)
+	if allAuditslength != auditPosition {
+		fmt.Print(printTxt)
+	} else {
+		fmt.Println(printTxt)
+	}
 }
 
 // helper for progress bar
