@@ -1,0 +1,30 @@
+{  
+    "system": 
+    {
+      "systemName": "Linux",
+      "version": "20.04.1-Ubuntu",
+      "root": true
+    },
+    "commands": [
+      {
+        "name": "check_grub_access",
+        "command": "stat /boot/grub/grub.cfg | grep Uid",
+        "typeExpected":"contains",
+        "expected": "root",
+        "description": "grep for uid to see the user restrictions"
+      },
+      {
+        "name": "check_iptables_persistent_installed",
+        "command": "shell('dpkg-query -s iptables-persistent')",
+        "typeExpected":"contains",
+        "expected": "root",
+        "description": "Return message in stderr (leads to failed command), check the error.log"
+      },
+      {
+        "name": "check_ufw_enabled",
+        "command": "if(callContains('systemctl is-enabled ufw', 'enabled')){shell('ufw status | grep Status')}",
+        "expected": "enabled",
+        "description": "second command only runs as root"
+      }
+    ]
+  }
